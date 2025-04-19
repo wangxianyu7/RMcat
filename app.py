@@ -160,4 +160,4 @@ with col2:
     else:
         st.write("No data available for plotting.")
 
-st.caption("Last updated: 2022/09/20")
+st.caption("Last updated: 2025/04/19")
