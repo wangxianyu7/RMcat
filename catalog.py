@@ -87,7 +87,7 @@ with col1:
         df,
         gridOptions=grid_options,
         update_mode=GridUpdateMode.SELECTION_CHANGED,
-        enable_enterprise_modules=True,
+        enable_enterprise_modules=False,
         height=500,
         width='100%',
         allow_unsafe_jscode=True,
