@@ -34,13 +34,29 @@ st.markdown("""
 
 df = pd.read_csv('obliquity.csv')
 
-st.markdown("""
-    <h2><span style="color: black;">RM</span><span style="color: red;">Cat</span>: Orbital Obliquity Measurements from Global Modeling to Rossiter-McLaughlin Effects</h2>
+import base64
+
+# Convert local image to base64
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        encoded = base64.b64encode(img_file.read()).decode()
+    return f"data:image/png;base64,{encoded}"
+
+image_base64 = get_base64_image("logo.png")
+
+st.markdown(f"""
+    <h2>
+        <img src="{image_base64}" alt="RMcat Logo" style="height: 60px; vertical-align: middle; margin-right: 10px;">
+        <span style="color: black;">RM</span><span style="color: red;">Cat</span>: Orbital Obliquity Measurements from Global Modeling to Rossiter-McLaughlin Effects
+    </h2>
     <details>
-    <summary>About</summary>
-    <p>RMcat is a catalog of orbital obliquity measurements from global modeling to Rossiter-McLaughlin effects. It includes data from various sources and provides a comprehensive overview of the current state of research in this field.</p>
+        <summary>About</summary>
+        <p>RMcat is a catalog of orbital obliquity measurements from global modeling to Rossiter-McLaughlin effects. It includes data from various sources and provides a comprehensive overview of the current state of research in this field.</p>
     </details>
 """, unsafe_allow_html=True)
+
+
+
 
 lambdadeg, lambdadeg_uerr, lambdadeg_lerr = df['lambdadeg'].values, df['lambdadeg_uerr'].values, df['lambdadeg_lerr'].values
 abslam, abslam_uerr, abslam_lerr = normalize_lambda(lambdadeg, lambdadeg_lerr, lambdadeg_uerr)
