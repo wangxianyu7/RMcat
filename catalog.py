@@ -36,6 +36,10 @@ df = pd.read_csv('obliquity.csv')
 
 st.markdown("""
     <h2><span style="color: black;">RM</span><span style="color: red;">Cat</span>: Orbital Obliquity Measurements from Global Modeling to Rossiter-McLaughlin Effects</h2>
+    <details>
+    <summary>About</summary>
+    <p>RMcat is a catalog of orbital obliquity measurements from global modeling to Rossiter-McLaughlin effects. It includes data from various sources and provides a comprehensive overview of the current state of research in this field.</p>
+    </details>
 """, unsafe_allow_html=True)
 
 lambdadeg, lambdadeg_uerr, lambdadeg_lerr = df['lambdadeg'].values, df['lambdadeg_uerr'].values, df['lambdadeg_lerr'].values
@@ -76,8 +80,8 @@ with col1:
     """, unsafe_allow_html=True)
 
 with col2:
-    st.subheader('Data Visualization')
-    query_expr = st.text_area("Pandas filter for plot data (e.g., teff > 6000 & lambdadeg < 90):", 
+    # st.subheader('Data Visualization')
+    query_expr = st.text_area("**Data Visualization**: pandas.DataFrame.query() expression can be applied.", 
                               value="abslam_uerr < 50 and abslam_lerr < 50 and abslam < 900 and Pflag == 'y' ", height=68)
 
     try:
