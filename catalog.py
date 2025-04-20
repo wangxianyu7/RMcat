@@ -49,7 +49,7 @@ image_base64 = get_base64_image("logo.png")
 st.markdown(f"""
     <h2>
         <img src="{image_base64}" alt="RMcat Logo" style="height: 60px; vertical-align: middle; margin-right: 10px;">
-        <span style="color: black;">RM</span><span style="color: red;">Cat</span>: Orbital Obliquity Measurements from Global Modeling to Rossiter-McLaughlin Effects
+        <span style="color: black;">RM</span><span style="color: red;">Cat</span>: Stellar Obliquity Measurements from Global Modeling to Rossiter-McLaughlin Effects
     </h2>
     <details>
         <summary>About</summary>
