@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
+from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
+
 
 def normalize_lambda(lam, lam_lerr, lam_uerr):
     lam_output, lam_lerr_output, lam_uerr_output = [], [], []
@@ -68,7 +70,36 @@ col1, col2 = st.columns([2, 1])
 
 with col1:
     st.write(f"Showing {len(filtered_df)} entries (filtered from {len(df)} total entries)")
-    st.dataframe(filtered_df, use_container_width=True, hide_index=True)
+    # st.markdown("### Interactive Data Table (Filter like Excel)")
+
+    from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode
+
+    gb = GridOptionsBuilder.from_dataframe(df)
+    gb.configure_default_column(filter=True, sortable=True, resizable=True)
+    if "System" in df.columns:
+        gb.configure_column("System", pinned="left")
+    # gb.configure_grid_options(domLayout='normal') 
+    gb.configure_grid_options(autoSizeAllColumns=True)
+
+    grid_options = gb.build()
+
+    grid_response = AgGrid(
+        df,
+        gridOptions=grid_options,
+        update_mode=GridUpdateMode.SELECTION_CHANGED,
+        enable_enterprise_modules=True,
+        height=500,
+        width='100%',
+        allow_unsafe_jscode=True,
+        reload_data=True
+    )
+
+
+
+    # Get filtered data from visible rows
+    filtered_df = grid_response['data']
+
+
     st.markdown(r"""
     ### Summary Highlights
     <details>
