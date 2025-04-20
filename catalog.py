@@ -53,11 +53,23 @@ with col1:
     ### Summary Highlights
     <details>
     <summary> Hot Jupiter around Hot Stars can have High Obliquity: 7σ</summary>
-    Mar 07, 2025: Updated README
+    <a href="https://ui.adsabs.harvard.edu/abs/2010ApJ...718L.145W/abstract" target="_blank">
+        Winn, J. N., Fabrycky, D., Albrecht, S., et al. 2010, ApJL, 718, 2, L145.
+    </a>
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2010ApJ...719..602S/abstract" target="_blank">
+        Schlaufman, K. C. 2010, ApJ, 719, 1, 602.
+    </a>
     </details>
     <details>
     <summary> Single Star Warm Jupiter tend to be aligned: 3.5σ</summary>
-    Mar 07, 2025: Updated README
+    <a href="https://ui.adsabs.harvard.edu/abs/2024ApJ...973L..21W/abstract" target="_blank">
+        Wang, X.-Y., Rice, M., Wang, S., et al. 2024, ApJL, 973, 1, L21.
+    </a>
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2022AJ....164..104R/abstract" target="_blank">
+        Rice, M., Wang, S., Wang, X.-Y., et al. 2022, AJ,164, 3, 104.
+    </a>
     </details>
     <br/><br/>
     Last updated: 2025/04/19
