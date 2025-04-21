@@ -53,7 +53,7 @@ st.markdown(f"""
     </h2>
     <details>
         <summary>About</summary>
-        <p>RMcat is a catalog of orbital obliquity measurements from global modeling to Rossiter-McLaughlin effects. It includes data from various sources and provides a comprehensive overview of the current state of research in this field.</p>
+        <p>RMcat is a catalog of stellar obliquity measurements from global modeling to Rossiter-McLaughlin effects. It includes data from various sources and provides a comprehensive overview of the current state of research in this field.</p>
     </details>
 """, unsafe_allow_html=True)
 
