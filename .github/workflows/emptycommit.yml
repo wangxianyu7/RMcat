@@ -3,6 +3,7 @@ name: Empty Commit
 on:
   schedule:
     - cron: '0 */10 * * *'  # Runs every 10 hours
+  workflow_dispatch:        # Optional: lets you run it manually too
 
 jobs:
   empty-commit:
@@ -11,9 +12,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Git config
+        run: |
+          git config --global user.email "xianyuwang7@gmail.com"
+          git config --global user.name "wangxianyu7"
+
       - name: Create empty commit
         run: |
-          git config --local user.email "xianyuwang7@gmail.com"
-          git config --local user.name "wangxianyu7"
           git commit --allow-empty -m "Empty commit to keep repository active"
           git push
