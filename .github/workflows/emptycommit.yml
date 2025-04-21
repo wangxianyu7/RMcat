@@ -2,8 +2,11 @@ name: Empty Commit
 
 on:
   schedule:
-    - cron: '0 */10 * * *'  # Runs every 10 hours
-  workflow_dispatch:        # Optional: lets you run it manually too
+    - cron: '0 */10 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   empty-commit:
@@ -12,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Git config
+      - name: Set up Git
         run: |
           git config --global user.email "xianyuwang7@gmail.com"
           git config --global user.name "wangxianyu7"
