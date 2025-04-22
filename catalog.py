@@ -58,11 +58,28 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 
+# array(['System', 'st_teff', 'st_teff_uerr', 'st_teff_lerr', 'Pflag',
+#        'pl_projobliq', 'pl_projobliq_uerr', 'pl_projobliq_lerr', 'st_psi',
+#        'st_psi_uerr', 'st_psi_lerr', 'pl_letter', 'st_name', 'tic_id',
+#        'pl_ratdor', 'pl_ratdor_uerr', 'pl_ratdor_lerr', 'pl_bmassj',
+#        'pl_bmassj_uerr', 'pl_bmassj_lerr', 'pl_orbeccen',
+#        'pl_orbeccen_uerr', 'pl_orbeccen_lerr', 'st_mass', 'st_mass_uerr',
+#        'st_mass_lerr', 'st_radius', 'st_radius_uerr', 'st_radius_lerr',
+#        'st_mratio', 'st_mratio_uerr', 'st_mratio_lerr', 'Binary',
+#        'Ref_link', 'controversial', 'pl_projobliqabs',
+#        'pl_projobliqabs_uerr', 'pl_projobliqabs_lerr'], dtype=object)
 
+pars2label = {'pl_projobliqabs': 'Sky-projected obliquity (degrees)',
+              'st_teff': 'Stellar effective temperature (K)',
+              'st_mass': 'Stellar mass (M☉)',
+                'st_radius': 'Stellar radius (R☉)',
+                'pl_bmassj': 'Planet mass (Jupiter mass)',
+                'pl_orbeccen': 'Orbital eccentricity',
+                'pl_ratdor': 'Semi-major axis / stellar radius',
+                'st_psi': 'True stellar obliquity (degrees)',
+                'pl_projobliq': 'Sky-projected obliquity (degrees)',
+                'st_mratio': 'Stellar mass ratio'}
 
-lambdadeg, lambdadeg_uerr, lambdadeg_lerr = df['lambdadeg'].values, df['lambdadeg_uerr'].values, df['lambdadeg_lerr'].values
-abslam, abslam_uerr, abslam_lerr = normalize_lambda(lambdadeg, lambdadeg_lerr, lambdadeg_uerr)
-df['abslam'], df['abslam_uerr'], df['abslam_lerr'] = abslam, abslam_uerr, abslam_lerr
 
 filtered_df = df.copy()
 
@@ -129,7 +146,7 @@ with col1:
 with col2:
     # st.subheader('Data Visualization')
     query_expr = st.text_area("**Data Visualization**: pandas.DataFrame.query() expression can be applied.", 
-                              value="abslam_uerr < 50 and abslam_lerr < 50 and abslam < 900 and Pflag == 'y' ", height=68)
+                              value="pl_projobliqabs_uerr < 50 and pl_projobliqabs_lerr < 50 and pl_projobliqabs < 900 and Pflag == 'y' and Binary== 0 and pl_bmassj > 0.3 and controversial ==0 and pl_bmassj_lerr > 0.0001", height=68)
 
     try:
         query_expr_single_line = " ".join(query_expr.strip().splitlines())
@@ -140,8 +157,8 @@ with col2:
 
     if not plot_df.empty:
         numeric_columns = plot_df.select_dtypes(include='number').columns
-        default_x = numeric_columns.get_loc('teff') if 'teff' in numeric_columns else 0
-        default_y = numeric_columns.get_loc('abslam') if 'abslam' in numeric_columns else (1 if len(numeric_columns) > 1 else 0)
+        default_x = numeric_columns.get_loc('st_teff') if 'st_teff' in numeric_columns else 0
+        default_y = numeric_columns.get_loc('pl_projobliqabs') if 'pl_projobliqabs' in numeric_columns else (1 if len(numeric_columns) > 1 else 0)
 
         x_axis = st.selectbox('Select X-axis', numeric_columns, index=default_x)
         y_axis = st.selectbox('Select Y-axis', numeric_columns, index=default_y)
@@ -153,8 +170,17 @@ with col2:
             marker_symbol = st.selectbox("Select marker symbol", ["circle", "square", "diamond", "cross", "x", "triangle-up", "triangle-down"])
             marker_size = st.slider("Marker size", min_value=5, max_value=20, value=10)
             fig_title = st.text_input('Plot Title', value=f'{y_axis} vs {x_axis}')
-            x_label = st.text_input('X-axis Label', value=x_axis)
-            y_label = st.text_input('Y-axis Label', value=y_axis)
+            x_label = st.text_input('X-axis Label', value=pars2label.get(x_axis, x_axis))
+            y_label = st.text_input('Y-axis Label', value=pars2label.get(y_axis, y_axis))
+
+            custom_limits = st.checkbox("Manually set axis limits", value=False)
+
+            if custom_limits:
+                x_min = st.number_input("X-axis min", value=float(plot_df[x_axis].min()), step=0.1)
+                x_max = st.number_input("X-axis max", value=float(plot_df[x_axis].max()), step=0.1)
+                y_min = st.number_input("Y-axis min", value=float(plot_df[y_axis].min()), step=0.1)
+                y_max = st.number_input("Y-axis max", value=float(plot_df[y_axis].max()), step=0.1)
+
 
         hover_col = 'pl_name' if 'pl_name' in plot_df.columns else plot_df.columns[0]
 
@@ -172,7 +198,33 @@ with col2:
                          arrayminus=plot_df[yerr_lower] if use_yerr and yerr_lower in plot_df else None, color='rgba(0,0,0,0.3)')
         ))
 
-        fig.update_layout(title=fig_title, xaxis_title=x_label, yaxis_title=y_label)
+        fig.update_layout(
+            xaxis=dict(
+                title=dict(text=x_label, font=dict(color='black')),
+                autorange=not custom_limits,
+                range=[x_min, x_max] if custom_limits else None,
+                showline=True,
+                showgrid=False,
+                zeroline=False,
+                visible=True
+            ),
+            yaxis=dict(
+                title=dict(text=y_label, font=dict(color='black')),
+                autorange=not custom_limits,
+                range=[y_min, y_max] if custom_limits else None,
+                showline=True,
+                showgrid=False,
+                zeroline=False,
+                visible=True
+            ),
+            paper_bgcolor='white',
+            plot_bgcolor='white',
+            margin=dict(l=60, r=60, t=60, b=60)
+        )
+
+
+
+
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.write("No data available for plotting.")
