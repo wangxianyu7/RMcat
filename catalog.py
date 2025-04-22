@@ -2,26 +2,8 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
-from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, JsCode
 
-
-def normalize_lambda(lam, lam_lerr, lam_uerr):
-    lam_output, lam_lerr_output, lam_uerr_output = [], [], []
-
-    for i in range(len(lam)):
-        lambda_val = lam[i]
-        if lambda_val < 0:
-            lambda_val += 360
-        if 0 <= lambda_val < 180:
-            lam_output.append(lambda_val)
-            lam_lerr_output.append(lam_lerr[i])
-            lam_uerr_output.append(lam_uerr[i])
-        else:
-            lam_output.append(360 - lambda_val)
-            lam_lerr_output.append(lam_uerr[i])
-            lam_uerr_output.append(lam_lerr[i])
-
-    return lam_output, lam_lerr_output, lam_uerr_output
 st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="Catalog Viewer")
 st.sidebar.markdown("# Catalog Viewer 📊")
 
@@ -58,16 +40,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 
-# array(['System', 'st_teff', 'st_teff_uerr', 'st_teff_lerr', 'Pflag',
-#        'pl_projobliq', 'pl_projobliq_uerr', 'pl_projobliq_lerr', 'st_psi',
-#        'st_psi_uerr', 'st_psi_lerr', 'pl_letter', 'st_name', 'tic_id',
-#        'pl_ratdor', 'pl_ratdor_uerr', 'pl_ratdor_lerr', 'pl_bmassj',
-#        'pl_bmassj_uerr', 'pl_bmassj_lerr', 'pl_orbeccen',
-#        'pl_orbeccen_uerr', 'pl_orbeccen_lerr', 'st_mass', 'st_mass_uerr',
-#        'st_mass_lerr', 'st_radius', 'st_radius_uerr', 'st_radius_lerr',
-#        'st_mratio', 'st_mratio_uerr', 'st_mratio_lerr', 'Binary',
-#        'Ref_link', 'controversial', 'pl_projobliqabs',
-#        'pl_projobliqabs_uerr', 'pl_projobliqabs_lerr'], dtype=object)
+
 
 pars2label = {'pl_projobliqabs': 'Sky-projected obliquity (degrees)',
               'st_teff': 'Stellar effective temperature (K)',
@@ -89,17 +62,54 @@ with col1:
     st.write(f"Showing {len(filtered_df)} entries (filtered from {len(df)} total entries)")
     # st.markdown("### Interactive Data Table (Filter like Excel)")
 
-    from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode
 
+
+
+
+    
+    name_renderer = JsCode("""
+    class NameLinkRenderer {
+    init(params) {
+        this.eGui           = document.createElement('a');
+        this.eGui.innerText = params.value;      // show the name
+        this.eGui.href      = params.data.Ephemeris_reference;  // go to matching URL
+        this.eGui.target    = '_blank';
+        this.eGui.rel       = 'noopener noreferrer';
+        this.eGui.addEventListener('click', e => e.stopPropagation());
+    }
+    getGui() { return this.eGui; }
+    }
+    """)
+
+    # ---------------------------------------------------------------------
+    # 3.  Grid options
+    # ---------------------------------------------------------------------
     gb = GridOptionsBuilder.from_dataframe(df)
+
+    # default behaviour for every column
     gb.configure_default_column(filter=True, sortable=True, resizable=True)
+
+    # pin “System” column on the left if it exists
     if "System" in df.columns:
         gb.configure_column("System", pinned="left")
-    # gb.configure_grid_options(domLayout='normal') 
-    gb.configure_grid_options(autoSizeAllColumns=True)
+
+    # make the Name column clickable
+    gb.configure_column("Author_string", cellRenderer=name_renderer)
+
+    # optional: hide raw Link column
+    gb.configure_column("Ephemeris_reference", hide=True)
+
+    # grid‑level options
+    gb.configure_grid_options(
+        autoSizeAllColumns=True,
+        suppressRowClickSelection=True  # so row‑selection doesn’t swallow link clicks
+    )
 
     grid_options = gb.build()
 
+    # ---------------------------------------------------------------------
+    # 4.  Render the grid
+    # ---------------------------------------------------------------------
     grid_response = AgGrid(
         df,
         gridOptions=grid_options,
@@ -107,11 +117,12 @@ with col1:
         enable_enterprise_modules=False,
         height=500,
         width='100%',
-        allow_unsafe_jscode=True,
+        allow_unsafe_jscode=True,   # required for custom JS
         reload_data=True
-    )
-
-
+    )    
+        
+    
+    
 
     # Get filtered data from visible rows
     filtered_df = grid_response['data']
@@ -146,7 +157,7 @@ with col1:
 with col2:
     # st.subheader('Data Visualization')
     query_expr = st.text_area("**Data Visualization**: pandas.DataFrame.query() expression can be applied.", 
-                              value="pl_projobliqabs_uerr < 50 and pl_projobliqabs_lerr < 50 and pl_projobliqabs < 900 and Pflag == 'y' and Binary== 0 and pl_bmassj > 0.3 and controversial ==0 and pl_bmassj_lerr > 0.0001", height=68)
+                              value="pl_projobliqabs_uerr < 50 and pl_projobliqabs_lerr < 50 and pl_projobliqabs < 900 and Pflag == 'y'  and pl_bmassj > 0.3 and controversial ==0 and pl_bmassj_lerr > 0.0001 and pl_ratdor <11", height=68)
 
     try:
         query_expr_single_line = " ".join(query_expr.strip().splitlines())
