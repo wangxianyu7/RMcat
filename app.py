@@ -4,9 +4,10 @@ import streamlit as st
 main_page = st.Page("catalog.py", title="Catalog", icon="")
 page_2 = st.Page("simulator.py", title="RM simulator", icon="")
 page_3 = st.Page("softwares.py", title="Modeling softwares", icon="")
+page_4 = st.Page("psicalculator.py", title="True Obliquity (ψ) calculator", icon="")
 
 # Set up navigation
-pg = st.navigation([main_page, page_2, page_3])
+pg = st.navigation([main_page, page_2, page_3, page_4])
 
 # Run the selected page
 pg.run()
