@@ -3,3 +3,4 @@ plotly
 streamlit
 numpy
 streamlit-aggrid
+git+https://github.com/wangxianyu7/coPsi.git
