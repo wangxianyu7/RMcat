@@ -152,7 +152,7 @@ if st.button("Run Inclination Analysis"):
 
 
     # Show and download posterior CSV files
-    if os.path.exists("cospi.csv"):
+    if os.path.exists("psi.csv"):
         st.success(f"True Obliquity: {psi_v:.2f} +{psi_u:.2f} -{psi_l:.2f}")
         st.success(f"Latex format: \psi = {psi_v:.2f}^{{+{psi_u:.2f}}}_{{-{psi_l:.2f}}}")
         df_cospi = pd.read_csv("psi.csv")
