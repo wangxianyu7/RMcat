@@ -6,7 +6,8 @@ from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, JsCode
 
 st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="Catalog Viewer")
 st.sidebar.markdown("# Catalog Viewer 📊")
-
+# Todo
+# https://medium.com/academy-team/deploying-your-streamlit-project-with-a-free-aws-account-077224f3d6e2
 st.markdown("""
     <style>
         .stApp, body {
