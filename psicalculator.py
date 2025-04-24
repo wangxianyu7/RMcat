@@ -4,6 +4,9 @@ st.markdown("# True Obliquity (ψ) calculator 🪐")
 st.sidebar.markdown("# True Obliquity (ψ) calculator 🪐")
 
 
+st.markdown("""Powered by [coPsi](https://github.com/emilknudstrup/coPsi).""", unsafe_allow_html=True)
+
+
 import streamlit as st
 import coPsi
 import numpy as np
