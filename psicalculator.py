@@ -49,31 +49,44 @@ def simulate_PDF(median, lower_err, upper_err, size=1):
 st.header("Input Parameters")
 N = st.number_input("Number of Samples", min_value=1000, value=10000, step=1000)
 
-# Input values
-Rs_mu = st.number_input("Rs Median (Rsun)", value=1.47)
-Rs_sigma = st.number_input("Rs Sigma (Rsun)", value=0.017)
-Rs_lower_bound = st.number_input("Rs Lower Bound (Rsun)", value=0.5)
-Rs_upper_bound = st.number_input("Rs Upper Bound (Rsun)", value=2.0)
-Rs_type = st.selectbox("Rs Distribution Type", options=['gauss','tgauss','uniform','jeff'], index=0)
+# Create three columns
+col1, col2, col3, col4, col5 = st.columns(5)
 
-Prot_mu = st.number_input("Prot Median (days)", value=9.77)
-Prot_sigma = st.number_input("Prot Sigma (days)", value=0.98)
-Prot_lower_bound = st.number_input("Prot Lower Bound (days)", value=0.5)
-Prot_upper_bound = st.number_input("Prot Upper Bound (days)", value=22.0)
-Prot_type = st.selectbox("Prot Distribution Type", options=['gauss','tgauss','uniform','jeff'], index=0)
+# Column 1 inputs
+with col1:
+    Rs_mu = st.number_input("Rs Median (Rsun)", value=1.47)
+    Rs_sigma = st.number_input("Rs Sigma (Rsun)", value=0.017)
+    Rs_lower_bound = st.number_input("Rs Lower Bound (Rsun)", value=0.5)
+    Rs_upper_bound = st.number_input("Rs Upper Bound (Rsun)", value=2.0)
+    Rs_type = st.selectbox("Rs Distribution Type", options=['gauss', 'tgauss', 'uniform', 'jeff'], index=0)
 
-vsini_mu = st.number_input("Vsini Median (km/s)", value=7)
-vsini_sigma = st.number_input("Vsini Sigma (km/s)", value=1.1)
-vsini_lower_bound = st.number_input("Vsini Lower Bound (km/s)", value=1.0)
-vsini_upper_bound = st.number_input("Vsini Upper Bound (km/s)", value=12.0)
-vsini_type = st.selectbox("Vsini Distribution Type", options=['gauss','tgauss','uniform','jeff'], index=0)
+# Column 2 inputs
+with col2:
+    Prot_mu = st.number_input("Prot Median (days)", value=9.77)
+    Prot_sigma = st.number_input("Prot Sigma (days)", value=0.98)
+    Prot_lower_bound = st.number_input("Prot Lower Bound (days)", value=0.5)
+    Prot_upper_bound = st.number_input("Prot Upper Bound (days)", value=22.0)
+    Prot_type = st.selectbox("Prot Distribution Type", options=['gauss', 'tgauss', 'uniform', 'jeff'], index=0)
 
-lam = st.number_input("Lambda Median (deg)", value=6)
-lam_lerr = st.number_input("Lambda Lower Error (deg)", value=16)
-lam_uerr = st.number_input("Lambda Upper Error (deg)", value=17)
-pl_orbinc = st.number_input("Orbital Inclination Median (deg)", value=88.3)
-pl_orbinc_lerr = st.number_input("Orbital Inclination Lower Error (deg)", value=0.36)
-pl_orbinc_uerr = st.number_input("Orbital Inclination Upper Error (deg)", value=0.56)
+# Column 3 inputs
+with col3:
+    vsini_mu = st.number_input("Vsini Median (km/s)", value=7)
+    vsini_sigma = st.number_input("Vsini Sigma (km/s)", value=1.1)
+    vsini_lower_bound = st.number_input("Vsini Lower Bound (km/s)", value=1.0)
+    vsini_upper_bound = st.number_input("Vsini Upper Bound (km/s)", value=12.0)
+    vsini_type = st.selectbox("Vsini Distribution Type", options=['gauss', 'tgauss', 'uniform', 'jeff'], index=0)
+
+with col4:
+    lam = st.number_input("Lambda Median (deg)", value=6)
+    lam_lerr = st.number_input("Lambda Lower Error (deg)", value=16)
+    lam_uerr = st.number_input("Lambda Upper Error (deg)", value=17)
+    
+with col5:
+    pl_orbinc = st.number_input("Orbital Inclination Median (deg)", value=88.3)
+    pl_orbinc_lerr = st.number_input("Orbital Inclination Lower Error (deg)", value=0.36)
+    pl_orbinc_uerr = st.number_input("Orbital Inclination Upper Error (deg)", value=0.56)
+
+
 
 import io
 import contextlib
