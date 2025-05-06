@@ -4,5 +4,5 @@ streamlit
 numpy
 streamlit-aggrid
 git+https://github.com/wangxianyu7/coPsi.git
-radvel==1.4.11
+radvel
 ironman-package
