@@ -132,7 +132,7 @@ with col1:
     st.markdown(r"""
     ### Summary Highlights
     <details>
-    <summary> Hot Jupiter around Hot Stars can have High Obliquity: 7σ</summary>
+    <summary> Hot Jupiter around Hot Stars can have High Obliquity</summary>
     <a href="https://ui.adsabs.harvard.edu/abs/2010ApJ...718L.145W/abstract" target="_blank">
         Winn, J. N., Fabrycky, D., Albrecht, S., et al. 2010, ApJL, 718, 2, L145.
     </a>
@@ -140,19 +140,83 @@ with col1:
     <a href="https://ui.adsabs.harvard.edu/abs/2010ApJ...719..602S/abstract" target="_blank">
         Schlaufman, K. C. 2010, ApJ, 719, 1, 602.
     </a>
+    
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2024A%26A...690A.379K/abstract" target="_blank">
+        Knudstrup, E., Albrecht, S. H., Winn, J. N., et al. 2024, AA, 690, A379. 
+    </a>
+    
+    
     </details>
     <details>
-    <summary> Single Star Warm Jupiter tend to be aligned: 3.5σ</summary>
+    <summary> Single-Star compact multiplanet systems tend to be aligned</summary>
+
+    <a href="https://ui.adsabs.harvard.edu/abs/2022AJ....164..104R/abstract" target="_blank">
+        Albrecht, S., Winn, J. N., Marcy, G. W., et al. 2013, ApJ, 771, 1, 11.
+    </a>
+    </details>
+    
+    
+    
+    </details>
+    <details>
+    <summary> Single-Star warm Jupiters tend to be aligned</summary>
+
+    <a href="https://ui.adsabs.harvard.edu/abs/2022AJ....164..104R/abstract" target="_blank">
+        Rice, M., Wang, S., Wang, X.-Y., et al. 2022, AJ,164, 3, 104.
+    </a>
+    <br/>
     <a href="https://ui.adsabs.harvard.edu/abs/2024ApJ...973L..21W/abstract" target="_blank">
         Wang, X.-Y., Rice, M., Wang, S., et al. 2024, ApJL, 973, 1, L21.
     </a>
     <br/>
-    <a href="https://ui.adsabs.harvard.edu/abs/2022AJ....164..104R/abstract" target="_blank">
-        Rice, M., Wang, S., Wang, X.-Y., et al. 2022, AJ,164, 3, 104.
+    
+    Even with high eccentricity:
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2024arXiv241208692E/abstract" target="_blank">
+    Espinoza-Retamal, J.~I., Jordan, A., Brahm, R., et al. 2024, arXiv:2412.08692.
     </a>
+    
     </details>
+    <details>
+    <summary> Single-Star high-mass-ratio systems tend to be aligned</summary>
+
+    <a href="https://ui.adsabs.harvard.edu/abs/2011A%26A...533A.130H/abstract" target="_blank">
+        Hebrard, G., Evans, T. M., Alonso, R., et al. 2011, A&A, 533, A130.
+    </a>
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2025ApJ...983L..42R/abstract" target="_blank">
+        Rusznak, J., Wang, X.-Y., Rice, M., et al. 2025, ApJL, 2, L42.
+    </a>
+    
+    
+    
+    </details>
+    <details>
+    <summary> A Preponderance of Perpendicular Planets</summary>
+
+    <a href="https://ui.adsabs.harvard.edu/abs/2022AJ....164..104R/abstract" target="_blank">
+       Albrecht, S. H., Marcussen, M. L., Winn, J. N., et al. 2021, ApJL, 1, L1.
+    </a>
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2023ApJ...950L...2S/abstract" target="_blank">
+        Siegel, J. C., Winn, J. N., & Albrecht, S. H. 2023, ApJL, 950, 1, L2.
+    </a>
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2023AJ....166..112D/abstract" target="_blank">
+        Dong, J. & Foreman-Mackey, D. 2023, AJ, 166, 3, 112.
+    </a>
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2023AJ....166..112D/abstract" target="_blank">
+         Espinoza-Retamal, J. I., Stefansson, G., Petrovich, C., et al. 2024, AJ, 168, 4, 185. 
+    </a>
+
+    </details>
+    More details can be found in the  review paper: <a href="https://ui.adsabs.harvard.edu/abs/2022PASP..134h2001A/abstract" target="_blank">
+       Stellar Obliquities in Exoplanetary Systems.
+    </a>
     <br/><br/>
-    Last updated: 2025/04/19
+    Last updated: 2025/04/29
     """, unsafe_allow_html=True)
 
 with col2:

@@ -4,7 +4,7 @@ st.markdown("# True Obliquity (ψ) calculator 🪐")
 st.sidebar.markdown("# True Obliquity (ψ) calculator 🪐")
 
 
-st.markdown("""Powered by [coPsi](https://github.com/emilknudstrup/coPsi).""", unsafe_allow_html=True)
+st.markdown("""Powered by [coPsi](https://github.com/emilknudstrup/coPsi) and [Masuda&Winn2020](http://ui.adsabs.harvard.edu/abs/2020AJ....159...81M/abstract).""", unsafe_allow_html=True)
 
 
 import streamlit as st
