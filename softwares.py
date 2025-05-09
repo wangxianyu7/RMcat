@@ -12,7 +12,7 @@ st.markdown("#### 1.2 [Allesfitter + Hirano+2011](https://github.com/wangxianyu7
 st.markdown("#### 2.1 [EXOFASTv2 + Ohta+2005](https://github.com/jdeast/EXOFASTv2)")
 st.markdown("#### 2.2 [EXOFASTv2 + Hirano+2011](https://github.com/wangxianyu7/EXOFASTv2)")
 
-st.markdown("#### 3. [Exoplanet + Starry](https://github.com/exoplanet-dev/exoplanet) ([Starry link](https://github.com/rodluger/starry))")
+st.markdown("#### 3. [Exoplanet + Starry](https://github.com/exoplanet-dev/exoplanet) ([link](https://github.com/rodluger/starry))")
 
 st.markdown("#### 4. [Ironman](https://github.com/jiespinozar/ironman)")
 st.markdown("#### 5. [PyAORME](https://github.com/andres-jordan/PyARoME)")
