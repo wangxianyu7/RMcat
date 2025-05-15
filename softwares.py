@@ -21,9 +21,9 @@ with col1:
 with col2:
     st.markdown("### Hirano2011")
     
-    st.markdown("#### 7. [tracit](https://github.com/emilknudstrup/tracit)")
-    st.markdown("#### 1.2 [Allesfitter + Hirano2011](https://github.com/wangxianyu7/Allesfitters)")
-    st.markdown("#### 2.2 [EXOFASTv2 + Hirano2011](https://github.com/wangxianyu7/EXOFASTv2)")
+    st.markdown("#### [tracit](https://github.com/emilknudstrup/tracit)")
+    st.markdown("#### [Allesfitter + Hirano2011](https://github.com/wangxianyu7/Allesfitters)")
+    st.markdown("#### [EXOFASTv2 + Hirano2011](https://github.com/wangxianyu7/EXOFASTv2)")
     
 
 with col3:
