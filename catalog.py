@@ -212,8 +212,18 @@ with col1:
     </a>
 
     </details>
-    More details can be found in the  review paper: <a href="https://ui.adsabs.harvard.edu/abs/2022PASP..134h2001A/abstract" target="_blank">
-       Stellar Obliquities in Exoplanetary Systems.
+    More details can be found in the review papers: 
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2015ARA%26A..53..409W/abstract" target="_blank">
+       The Occurrence and Architecture of Exoplanetary Systems
+    </a>
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2018haex.bookE...2T/abstract" target="_blank">
+       The Rossiter-McLaughlin effect in Exoplanet Research
+    </a>
+    <br/>
+    <a href="https://ui.adsabs.harvard.edu/abs/2022PASP..134h2001A/abstract" target="_blank">
+       Stellar Obliquities in Exoplanetary Systems
     </a>
     <br/><br/>
     Last updated: 2025/04/29
