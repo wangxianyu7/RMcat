@@ -15,7 +15,7 @@ with col1:
     st.markdown("### Ohta2005")
     st.markdown("#### [Allesfitter + ellc](https://github.com/MNGuenther/allesfitter) ")
     st.markdown("#### [EXOFASTv2 + Ohta2005](https://github.com/jdeast/EXOFASTv2)")
-    st.markdown("#### [Exoplanet + Starry](https://github.com/exoplanet-dev/exoplanet) ([link](https://github.com/rodluger/starry))")
+    st.markdown("#### [Exoplanet](https://github.com/exoplanet-dev/exoplanet) + [Starry](https://github.com/rodluger/starry)")
     
 
 with col2:
