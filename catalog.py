@@ -221,6 +221,7 @@ with col1:
         st.markdown("### 📝 Recent Update Log")
         st.markdown("""
         <ul>
+            <li><b>2025-05-23</b>: TEPcat version:2025/05/20.</li>
             <li><b>2025-05-09</b>: Added obliuiqty chatbot and RM ampltiude estimator (in miscellaneous).</li>
             <li><b>2025-05-05</b>: Added RM simulator.</li>
             <li><b>2025-04-24</b>: Added true obliquity calculator.</li>
