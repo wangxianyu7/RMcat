@@ -1,5 +1,5 @@
 import streamlit as st
-
+st.set_page_config(page_title='SOCat', layout = 'wide', page_icon = 'logo.png', initial_sidebar_state = 'auto')
 # Define the pages
 main_page = st.Page("catalog.py", title="Catalog", icon="")
 page_2 = st.Page("simulator.py", title="RM simulator", icon="")

@@ -6,7 +6,18 @@ from astropy.time import Time
 import ironman
 import matplotlib.gridspec as gridspec
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="SOCat",page_icon = 'logo.png')
+
+st.markdown("""
+    <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        .stApp, body {
+            background-color: white !important;
+            color: black !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 st.title("RM Simulator 🪐")
 
 st.markdown("Powered by [ironman+Hirano2010](https://github.com/jiespinozar/ironman).")

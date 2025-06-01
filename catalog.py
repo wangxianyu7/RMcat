@@ -4,12 +4,14 @@ import plotly.graph_objects as go
 import numpy as np
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, JsCode
 
-st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="Catalog Viewer")
+st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="SOCat",page_icon = 'logo.png')
 st.sidebar.markdown("# Catalog Viewer 📊")
 # Todo
 # https://medium.com/academy-team/deploying-your-streamlit-project-with-a-free-aws-account-077224f3d6e2
 st.markdown("""
     <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
         .stApp, body {
             background-color: white !important;
             color: black !important;

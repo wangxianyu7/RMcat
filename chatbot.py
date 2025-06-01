@@ -9,7 +9,18 @@ from streamlit.components.v1 import iframe   # ← simpler alias
 #     page_icon="🤖",
 #     layout="wide",
 # )
+st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="SOCat",page_icon = 'logo.png')
 
+st.markdown("""
+    <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        .stApp, body {
+            background-color: white !important;
+            color: black !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 st.markdown("# Stellar Obliquity Chatbot 🤖")
 st.sidebar.markdown("## Stellar Obliquity Chatbot 🤖")
 # ------------------------------------------------

@@ -1,7 +1,17 @@
 import streamlit as st
-
+st.markdown("""
+    <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        .stApp, body {
+            background-color: white !important;
+            color: black !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 st.markdown("# Modeling softwares 🛠️")
 st.sidebar.markdown("# Modeling softwares 🛠️")
+st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="SOCat",page_icon = 'logo.png')
 
 
 st.markdown("""This page contains a list of modeling softwares that can be used to model the RM effect. The list is not exhaustive and is meant to give an overview of the available options. If you have any suggestions for additions, please let us know!""")

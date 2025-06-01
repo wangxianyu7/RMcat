@@ -1,6 +1,18 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="SOCat",page_icon = 'logo.png')
+
+st.markdown("""
+    <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        .stApp, body {
+            background-color: white !important;
+            color: black !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 st.title("Miscellaneous")
 
 st.markdown("1) Estimate the maximum RM signal amplitude using an analytic approximation ([Albrecht+2022](https://ui.adsabs.harvard.edu/abs/2022PASP..134h2001A/abstract)):")

@@ -1,7 +1,17 @@
 import streamlit as st
-
+st.markdown("""
+    <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        .stApp, body {
+            background-color: white !important;
+            color: black !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 st.markdown("# True Obliquity (ψ) calculator 🪐")
 st.sidebar.markdown("# True Obliquity (ψ) calculator 🪐")
+st.set_page_config(layout="wide", initial_sidebar_state="auto", page_title="SOCat",page_icon = 'logo.png')
 
 
 st.markdown("""Powered by [coPsi](https://github.com/emilknudstrup/coPsi) and [Masuda&Winn2020](http://ui.adsabs.harvard.edu/abs/2020AJ....159...81M/abstract).""", unsafe_allow_html=True)
