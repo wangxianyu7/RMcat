@@ -216,7 +216,6 @@ with col1:
         <a href="https://ui.adsabs.harvard.edu/abs/2022PASP..134h2001A/abstract" target="_blank">
             Stellar Obliquities in Exoplanetary Systems
         </a><br/><br/>
-        Last updated: 2025/04/29
         """, unsafe_allow_html=True)
 
     with update_col:
